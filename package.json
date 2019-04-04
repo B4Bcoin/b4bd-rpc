@@ -1,18 +1,18 @@
 {
-  "name": "ravend-rpc",
-  "description": "Ravencoin Client Library to connect to Ravencoin via RPC",
+  "name": "b4bd-rpc",
+  "description": "B4Bcoin Client Library to connect to B4Bcoin via RPC",
   "version": "1.0.3",
   "author": {
-    "name": "Under",
+    "name": "Ivo",
     "email": ""
   },
   "keywords": [
-    "ravencoin",
+    "B4Bcoin",
     "rpc"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/underdarkskies/ravend-rpc"
+    "url": "https://github.com/B4Bcoin/b4bd-rpc"
   },
   "license": "MIT",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "async": "^1.3.0"
   },
   "bugs": {
-    "url": "https://github.com/underdarkskies/ravend-rpc/issues"
+    "url": "https://github.com/B4Bcoin/b4bd-rpc/issues"
   },
-  "homepage": "https://github.com/underdarkskies/ravend-rpc"
+  "homepage": "https://github.com/B4Bcoin/b4bd-rpc"
 }

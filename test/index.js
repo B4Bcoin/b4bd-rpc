@@ -75,7 +75,7 @@ describe('RpcClient', function() {
     var client = new RpcClient({
       user: 'user',
       pass: 'pass',
-      port: 8766,
+      port: 8667,
     });
     client.protocol.should.equal(https);
 
@@ -87,7 +87,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       protocol: 'http'
     });
     client.protocol.should.equal(http);
@@ -100,7 +100,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -131,7 +131,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: false
     });
@@ -167,7 +167,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: false
     });
@@ -204,7 +204,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: false
     });
@@ -240,10 +240,10 @@ describe('RpcClient', function() {
   it('should handle connection rejected 401 unauthorized', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -258,10 +258,10 @@ describe('RpcClient', function() {
       return new FakeRequest();
     });
 
-    client.getBalance('mgbJb4DKMxKQDuv2SiUbfW9TD7XdxzLKXz', 6, function(error, parsedBuf) {
+    client.getBalance('BgbJb4DKMxKQDuv2SiUbfW9TD7XdxzLKXz', 6, function(error, parsedBuf) {
       requestStub.restore();
       should.exist(error);
-      error.message.should.equal('Ravencoin JSON-RPC: Connection Rejected: 401 Unnauthorized');
+      error.message.should.equal('B4Bcoin JSON-RPC: Connection Rejected: 401 Unnauthorized');
       done();
     });
 
@@ -273,7 +273,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -303,7 +303,7 @@ describe('RpcClient', function() {
       user: 'user',
       pass: 'pass',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -322,7 +322,7 @@ describe('RpcClient', function() {
     client.getDifficulty(function(error, parsedBuf) {
       requestStub.restore();
       should.exist(error);
-      error.message.should.equal('Ravencoin JSON-RPC: Work queue depth exceeded');
+      error.message.should.equal('B4Bcoin JSON-RPC: Work queue depth exceeded');
       done();
     });
 
@@ -331,10 +331,10 @@ describe('RpcClient', function() {
   it('should handle EPIPE error case 1', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -356,7 +356,7 @@ describe('RpcClient', function() {
     client.getDifficulty(function(error, parsedBuf) {
       requestStub.restore();
       should.exist(error);
-      error.message.should.equal('Ravencoin JSON-RPC: Request Error: write EPIPE');
+      error.message.should.equal('B4Bcoin JSON-RPC: Request Error: write EPIPE');
       done();
     });
 
@@ -365,10 +365,10 @@ describe('RpcClient', function() {
   it('should handle EPIPE error case 2', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -398,10 +398,10 @@ describe('RpcClient', function() {
   it('should handle ECONNREFUSED error', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -419,7 +419,7 @@ describe('RpcClient', function() {
     client.getDifficulty(function(error, parsedBuf) {
       requestStub.restore();
       should.exist(error);
-      error.message.should.equal('Ravencoin JSON-RPC: Request Error: connect ECONNREFUSED');
+      error.message.should.equal('B4Bcoin JSON-RPC: Request Error: connect ECONNREFUSED');
       done();
     });
 
@@ -428,10 +428,10 @@ describe('RpcClient', function() {
   it('should callback with error if invalid json', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -450,7 +450,7 @@ describe('RpcClient', function() {
     client.getDifficulty(function(error, parsedBuf) {
       requestStub.restore();
       should.exist(error);
-      error.message.should.equal('Ravencoin JSON-RPC: Error Parsing JSON: Unexpected token o in JSON at position 1');
+      error.message.should.equal('B4Bcoin JSON-RPC: Error Parsing JSON: Unexpected token o in JSON at position 1');
       done();
     });
 
@@ -459,10 +459,10 @@ describe('RpcClient', function() {
   it('should callback with error if blank response', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });
@@ -481,7 +481,7 @@ describe('RpcClient', function() {
     client.getDifficulty(function(error, parsedBuf) {
       requestStub.restore();
       should.exist(error);
-      error.message.should.equal('Ravencoin JSON-RPC: Error Parsing JSON: Unexpected end of JSON input');
+      error.message.should.equal('B4Bcoin JSON-RPC: Error Parsing JSON: Unexpected end of JSON input');
       done();
     });
 
@@ -490,10 +490,10 @@ describe('RpcClient', function() {
   it('should add additional http options', function(done) {
 
     var client = new RpcClient({
-      user: 'user',
-      pass: 'pass',
+      user: 'test',
+      pass: 'test',
       host: 'localhost',
-      port: 8766,
+      port: 8667,
       rejectUnauthorized: true,
       disableAgent: true
     });

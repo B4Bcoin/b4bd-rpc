@@ -1,67 +1,42 @@
-ravend-rpc.js
+B4Bcoin-rpc.js
 ===============
 
-A client library to connect to Ravencoin RPC in JavaScript.
+A client library to connect to B4Bcoin RPC in JavaScript.
 
 ## Get Started
 
-ravend-rpc.js runs on [node](http://nodejs.org/)
+b4bd-rpc.js runs on [node](http://nodejs.org/)
 
 ```bash
-npm install ravend-rpc
+npm install b4bd-rpc
 ```
 
 ## Examples
 
 ```javascript
-var run = function() {
-  var ravencore = require('ravencore');
-  var RpcClient = require('ravend-rpc');
 
-  var config = {
-    protocol: 'http',
-    user: 'user',
-    pass: 'pass',
-    host: '127.0.0.1',
-    port: '18766',
-  };
+var RpcClient = require('b4bd-rpc');
+// var RpcClient = require('./');
 
-  var rpc = new RpcClient(config);
-
-  var txids = [];
-
-  function showNewTransactions() {
-    rpc.getRawMemPool(function (err, ret) {
-      if (err) {
-        console.error(err);
-        return setTimeout(showNewTransactions, 10000);
-      }
-
-      function batchCall() {
-        ret.result.forEach(function (txid) {
-          if (txids.indexOf(txid) === -1) {
-            rpc.getRawTransaction(txid);
-          }
-        });
-      }
-
-      rpc.batch(batchCall, function(err, rawtxs) {
-        if (err) {
-          console.error(err);
-          return setTimeout(showNewTransactions, 10000);
-        }
-
-        rawtxs.map(function (rawtx) {
-          var tx = new ravencore.Transaction(rawtx.result);
-          console.log('\n\n\n' + tx.id + ':', tx.toObject());
-        });
-
-        txids = ret.result;
-        setTimeout(showNewTransactions, 2500);
-      });
-    });
-  }
-
-  showNewTransactions();
+var config = {
+  protocol: 'http',
+  user: 'user',
+  pass: 'pass',
+  host: '127.0.0.1',
+  port: '8667',
 };
+
+var rpc = new RpcClient(config);
+
+
+rpc.getDifficulty(function(error, parsedBuf) {
+  console.log(parsedBuf);
+});
+
+
+rpc.listaddressesbyasset('TEST', function(error, parsedBuf) {
+  console.log(parsedBuf);
+});
+
+
 ```
